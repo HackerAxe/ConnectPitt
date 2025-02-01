@@ -11,7 +11,7 @@ class User(Base):
     id = Column("id", Integer, primary_key=True, autoincrement=True)
     name = Column("name", String, nullable=False)
     phoneNumber = Column("phoneNumber", String, nullable=False)
-    LinkedIn = Column("LinkedIn", String, nullable=False)
+    linkedIn = Column("linkedIn", String, nullable=False)
     question_one=Column("question_one", Integer, nullable=False)
     question_two=Column("question_two", Integer, nullable=False)
     question_three=Column("question_three", Integer, nullable=False)
@@ -26,7 +26,7 @@ class User(Base):
         return{"id":self.id,
                "name": self.name,
                "phoneNumber": self.phoneNumber,
-               "LinkedIn": self.LinkedIn,
+               "linkedIn": self.linkedIn,
                "question_one": self.question_one,
                "question_two": self.question_two,
                "question_three": self.question_three,
