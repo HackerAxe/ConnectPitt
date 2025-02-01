@@ -54,7 +54,7 @@ def results():
     try:
         session.add(new_user)
         session.commit()
-        return render_template("results.html", user=new_user_in_JSON_format)
+        return render_template("results.html", users=groupINJSONFormat)
     except:
         return 'Issue adding task'
 
