@@ -1,13 +1,20 @@
 from flask import Flask, redirect, render_template, request, session, url_for
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 from user_model import Base, User
 
 app = Flask(__name__)
+
+engine = create_engine("sqlite:///users.db", echo=True)
+Base.metadata.create_all(bind=engine)
+Session = sessionmaker(bind=engine)
+session = Session()
 
 @app.route("/")
 def main():
     return render_template('index.html')
 
-@app.route("/results")
+@app.route("/results", methods=["POST"])
 def results():
     name=request.form["name"]
     phoneNumber=request.form["phoneNumber"]
