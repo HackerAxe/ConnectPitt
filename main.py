@@ -35,7 +35,6 @@ def results():
         return render_template("results.html", user=new_user_in_JSON_format)
     except:
         return 'Issue adding task'
-    return render_template('results.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
