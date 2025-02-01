@@ -1,10 +1,13 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, redirect, render_template, request, url_for
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/", methods=['GET', 'POST'])
 def main():
-    return render_template('index.html')
+    if request.method == 'GET':
+        return render_template('index.html')
+    
+    return redirect(url_for('results'))
 
 @app.route("/results")
 def results():

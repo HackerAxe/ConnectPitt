@@ -9,7 +9,7 @@ For the SheInnovates 2025 Hackathon
 - Create JavaScript: JQuery - Andrew Chen
 - Create CSS Stylesheets - Fi 
 - Create script to process backend data
-- Create a SQL Database - Luke B
+- ~~Create a SQL Database~~ - Luke B
 - Learn JQuery - Andrew Chen
 - Learn JSON Processing, Language of Choice
 - Learn Bash Scripting - Alexis F
