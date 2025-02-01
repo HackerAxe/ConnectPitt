@@ -18,7 +18,7 @@ def main():
 def results():
     name=request.form["name"]
     phoneNumber=request.form["phoneNumber"]
-    linkedIn=request.form["LinkedIn"]
+    linkedIn=request.form["linkedIn"]
     question_one=request.form["question_one"]
     question_two=request.form["question_two"]
     question_three=request.form["question_three"]
