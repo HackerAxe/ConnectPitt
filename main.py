@@ -34,6 +34,7 @@ def results():
                   question_eight=question_eight)
     new_user_in_JSON_format=new_user.toJSON()
     users = session.query(User).order_by(User.date_created).all()
+    group=[]
     groupInJSONFormat=[]
     done=false
     maxAvgPercentDiff=0.0
@@ -41,8 +42,10 @@ def results():
         for user in users:
             currUserInJSONFormat=user.toJSON()
             avgPercentDiff=new_user.avgPercentDiff(new_user, user)
-            if avgPercentDiff<=maxAvgPercentDiff: groupINJSONFormat.add(currUserInJSONFormat)
-        if len(groupInJSONFormat)>0: done=true
+            if avgPercentDiff<=maxAvgPercentDiff: 
+                group.add(user)
+                groupINJSONFormat.add(currUserInJSONFormat)
+        if len(group)>0: done=true
         else: maxAvgPercentDiff=maxAvgPercentDiff+0.1
 
     print(new_user_in_JSON_format)
