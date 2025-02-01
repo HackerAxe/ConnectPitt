@@ -8,11 +8,9 @@
 <body>
     <p> Results Page </p>
     <ul id="user_group">
-        {%for user in users%}
-            <li class="user">
-                <ul>{{user}}</ul>
-            </li>
-        {%endfor%}
+        {% for user in users %}
+            <li>{{user}}</li>
+        {% endfor %}
     </ul>
 </body>
 </html>
