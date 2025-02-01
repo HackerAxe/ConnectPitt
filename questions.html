@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MBTI Matchmaker</title>
+    <script>
+        async function saveUserData() {
+            let name = document.getElementById("name").value;
+            let phoneNumber = document.getElementById("phoneNumber").value;
+            let linkedin = document.getElementById("linkedin").value;
+            let mbtiType = document.querySelector('input[name="mbtiType"]:checked').value;
+            
+            let userData = `${name},${phoneNumber},${linkedin},${mbtiType}\n`;
+            
+            try {
+                await fetch('UserData.txt', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'text/plain' },
+                    body: userData
+                });
+            } catch (error) {
+                console.error("Error saving data:", error);
+            }
+            
+            displayUsersWithSameMBTI(mbtiType);
+        }
+        
+        async function displayUsersWithSameMBTI(type) {
+            let displayArea = document.getElementById("sameMbtiUsers");
+            displayArea.innerHTML = "<h3>People with the same MBTI type:</h3>";
+            
+            try {
+                let response = await fetch('UserData.txt');
+                let data = await response.text();
+                let users = data.trim().split('\n');
+                
+                users.forEach(user => {
+                    let userData = user.split(',');
+                    if (userData[3] === type) {
+                        displayArea.innerHTML += `<p>Name: ${userData[0]}, Phone: ${userData[1]}, LinkedIn: <a href="${userData[2]}" target="_blank">${userData[2]}</a></p>`;
+                    }
+                });
+            } catch (error) {
+                console.error("Error reading data:", error);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Welcome to MBTI Matchmaker!</h1>
+    <p>MBTI Matchmaker simplifies the complexities of finding a roommate, study buddy, friend, or even a love interest!</p>
+    
+    <form onsubmit="event.preventDefault(); saveUserData();">
+        <label for="name">What is your name?</label>
+        <input type="text" id="name" required><br><br>
+
+        <label for="phoneNumber">And Phone Number?</label>
+        <input type="text" id="phoneNumber" required><br><br>
+
+        <p>Choose a Pet:</p>
+        <input type="radio" id="Introverted" value="Introverted" required>
+        <label for="Introverted">Cats</label><br>
+
+        <input type="radio" id="Extroverted" value="Extroverted" required>
+        <label for="Extroverted">Dogs</label><br>
+      
+        <p>Choose a Space:</p>
+        <input type="radio" id="Intuitive" value="Intuitive" required>
+        <label for="Intuitive">Modern Cabin in Suburban Expanse</label><br>
+
+        <input type="radio" id="Sensing" value="Sensing" required>
+        <label for="Sensing">City Penthouse Suite</label><br>
+
+        <p>Choose a Superpower:</p>
+        <input type="radio" id="Thinking" value="Thinking" required>
+        <label for="Thinking">Invisible Cloak with flying capabilities</label><br>
+
+        <input type="radio" id="Feeling" value="Feeling" required>
+        <label for="Feeling">Portal teleportation to another Time Dimension</label><br>
+
+        <p>Available Cars:</p>
+        <input type="radio" id="Judging" value="Judging" required>
+        <label for="Judging">Jeep Truck</label><br>
+
+        <input type="radio" id="Perceptive" value="Perceptive" required>
+        <label for="Perceptive">Tesla</label><br>
+
+        <p>Pick someone who made history:</p>
+        <input type="radio" id="futuristic" name="mbtiType" value="Futuristic" required>
+        <label for="futuristic">Elon Musk</label><br>
+        
+        <input type="radio" id="historian" name="mbtiType" value="Historian">
+        <label for="historian">Albert Einstein</label><br><br>
+        
+        <label for="linkedin">Please enter your LinkedIn link:</label>
+        <input type="url" id="linkedin" required><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+    
+    <div id="sameMbtiUsers"></div>
+</body>
+</html>
