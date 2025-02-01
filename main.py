@@ -2,12 +2,9 @@ from flask import Flask, redirect, render_template, request, url_for
 
 app = Flask(__name__)
 
-@app.route("/", methods=['GET', 'POST'])
+@app.route("/")
 def main():
-    if request.method == 'GET':
-        return render_template('index.html')
-    
-    return redirect(url_for('results'))
+    return render_template('index.html')
 
 @app.route("/results")
 def results():
