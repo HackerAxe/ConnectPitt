@@ -36,3 +36,15 @@ class User(Base):
                "question_seven": self.question_seven,
                "question_eight": self.question_eight
                }
+    def avgPercentDiff(compuser):
+        diff1=percentDiff(self.question_one, compuser.question_one)
+        diff2=percentDiff(self.question_two, compuser.question_two)
+        diff3=percentDiff(self.question_three, compuser.question_three)
+        diff4=percentDiff(self.question_four, compuser.question_four)
+        diff5=percentDiff(self.question_five, compuser.question_five)
+        diff6=percentDiff(self.question_six, compuser.question_six)
+        diff7=percentDiff(self.question_seven, compuser.question_seven)
+        diff8=percentDiff(self.question_eight, compuser.question_eight)
+        return (diff1+diff2+diff3+diff4+diff5+diff6+diff7+diff8)/8
+    def percentDiff(valone, valtwo):
+        return 2*Math.abs(valone-valtwo)/(valone+valtwo)
