@@ -40,12 +40,11 @@ def results():
     while done==false:
         for user in users:
             currUserInJSONFormat=user.toJSON()
-            
-            
-    
-    
+            avgPercentDiff=new_user.avgPercentDiff(new_user, user)
+            if avgPercentDiff<=maxAvgPercentDiff: groupINJSONFormat.add(currUserInJSONFormat)
+        if len(groupInJSONFormat)>0: done=true
+        else: maxAvgPercentDiff=maxAvgPercentDiff+0.1
 
-    
     print(new_user_in_JSON_format)
 
     try:
