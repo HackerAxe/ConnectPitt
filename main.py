@@ -18,7 +18,7 @@ def main():
 def results():
     name=request.form["name"]
     phoneNumber=request.form["phoneNumber"]
-    LinkedIn=request.form["LinkedIn"]
+    linkedIn=request.form["LinkedIn"]
     question_one=request.form["question_one"]
     question_two=request.form["question_two"]
     question_three=request.form["question_three"]
@@ -28,7 +28,7 @@ def results():
     question_seven=request.form["question_seven"]
     question_eight=request.form["question_eight"]
 
-    new_user=User(name=name, phoneNumber=phoneNumber, LinkedIn=LinkedIn, question_one=question_one,
+    new_user=User(name=name, phoneNumber=phoneNumber, linkedIn=linkedIn, question_one=question_one,
                   question_two=question_two, question_three=question_three, question_four=question_four,
                   question_five=question_five, question_six=question_six, question_seven=question_seven,
                   question_eight=question_eight)
