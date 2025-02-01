@@ -38,7 +38,7 @@
                 users.forEach(user => {
                     let userData = user.split(',');
                     if (userData[3] === type) {
-                        displayArea.innerHTML += `<p>Name: ${userData[0]}, Phone: ${userData[1]}, LinkedIn: <a href="${userData[2]}" target="_blank">${userData[2]}</a></p>`;
+                        displayArea.innerHTML += `<p>First Name: ${userData[0]}, Last Name: ${userData[1]}, LinkedIn: <a href="${userData[2]}" target="_blank">${userData[2]}</a></p>`;
                     }
                 });
             } catch (error) {
