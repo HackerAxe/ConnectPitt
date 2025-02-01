@@ -13,6 +13,10 @@
         study buddy, friend, or even a <span style="color: red; font-family: Verdana, Geneva, Tahoma, sans-serif">love</span> interest!
     </p>
     <form action="{{results_ref}}" method="post">
+        <label for="name">Name</label><input type="text" name="name"><br>
+        <label for="phoneNumber">Phone Number</label><input type="text" name="phoneNumber"><br>
+        <label for="linkedIn">LinkedIn</label><input type="text" name="linkedIn"><br>
+
         <label for="q1"> Q1 - You would rather have the superpower of teleportation than telekinesis </label><br>
         <label>0</label><input type="radio" name="q1">
         <label>1</label><input type="radio" name="q1">
@@ -77,9 +81,7 @@
         <label>4</label><input type="radio" name="q8">
         <label>5</label><input type="radio" name="q8">
 
-        <p>
-            <button type="submit">Submit</button>   
-        </p>
+        <p><button type="submit">Submit</button>   </p>
         
     </form>
 </body>
