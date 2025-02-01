@@ -23,6 +23,8 @@ form {
 }
 
 label {font-size: x-large; color:#000000; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;}
+
+input {margin-right: 5%;}
 /* Style for body specifies a background color */
 body {
 	background-color: #ba5151;
