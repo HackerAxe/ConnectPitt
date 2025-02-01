@@ -39,7 +39,9 @@ class User(Base):
                }
     
     def percentDiff(self, valone, valtwo):
-        return 2*abs(valone-valtwo)/(valone+valtwo)
+        val1=int(valone)
+        val2=int(valtwo)
+        return 2*abs(val1-val2)/(val1+val2)
     
     def avgPercentDiff(self, compuser):
         diff1=self.percentDiff(self.question_one, compuser.question_one)
