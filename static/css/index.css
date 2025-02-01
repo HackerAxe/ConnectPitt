@@ -17,11 +17,12 @@ p {
 }
 
 form {
-	margin-top: 3%;
-	margin-left: 5%;
+	margin-top: 2%;
+	margin-left: 7%;
+	line-height: 1.5cm;
 }
 
-label {font-size: x-large; color:#000000}
+label {font-size: x-large; color:#000000; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;}
 /* Style for body specifies a background color */
 body {
 	background-color: #FFFFFF;
