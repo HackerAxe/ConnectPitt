@@ -6,12 +6,12 @@
     <title>MBTI Matchmaker</title>
     <script>
         async function saveUserData() {
-            let name = document.getElementById("name").value;
-            let phoneNumber = document.getElementById("phoneNumber").value;
+            let firstname = document.getElementById("firstname").value;
+            let lastname = document.getElementById("lastname").value;
             let linkedin = document.getElementById("linkedin").value;
-            let mbtiType = document.querySelector('input[name="mbtiType"]:checked').value;
+            let mbtiType = document.querySelector('input[firstname="mbtiType"]:checked').value;
             
-            let userData = `${name},${phoneNumber},${linkedin},${mbtiType}\n`;
+            let userData = `${firstname},${lastname},${linkedin},${mbtiType}\n`;
             
             try {
                 await fetch('UserData.txt', {
@@ -106,38 +106,57 @@
         <input type="radio" id="Sensing" value="Sensing" required>
         <label for="Sensing">0</label><br>
         
-        
-      
-        <p>Choose a Space:</p>
-        <input type="radio" id="Intuitive" value="Intuitive" required>
-        <label for="Intuitive">Modern Cabin in Suburban Expanse</label><br>
+        <p>You tend to trust strangers</p>
+        <input type="radio" id="Rational" value="Rational" required>
+        <label for="Rational">5</label><br>
 
-        <input type="radio" id="Sensing" value="Sensing" required>
-        <label for="Sensing">City Penthouse Suite</label><br>
+        <p>You tend to trust strangers</p>
+        <input type="radio" id="Rational" value="Rational" required>
+        <label for="Rational">4</label><br>
 
-        <p>Choose a Superpower:</p>
-        <input type="radio" id="Thinking" value="Thinking" required>
-        <label for="Thinking">Invisible Cloak with flying capabilities</label><br>
+        <p>You tend to trust strangers</p>
+        <input type="radio" id="Rational" value="Rational" required>
+        <label for="Rational">3</label><br>
 
-        <input type="radio" id="Feeling" value="Feeling" required>
-        <label for="Feeling">Portal teleportation to another Time Dimension</label><br>
+        <p>You tend to trust strangers</p>
+        <input type="radio" id="Logical" value="Logical" required>
+        <label for="Logical">2</label><br>
 
-        <p>Available Cars:</p>
-        <input type="radio" id="Judging" value="Judging" required>
-        <label for="Judging">Jeep Truck</label><br>
+        <p>You tend to trust strangers</p>
+        <input type="radio" id="Logical" value="Logical" required>
+        <label for="Logical">1</label><br>
 
-        <input type="radio" id="Perceptive" value="Perceptive" required>
-        <label for="Perceptive">Tesla</label><br>
+        <p>You tend to trust strangers</p>
+        <input type="radio" id="Logical" value="Logical" required>
+        <label for="Logical">0</label><br>
 
-        <p>Pick someone who made history:</p>
-        <input type="radio" id="futuristic" name="mbtiType" value="Futuristic" required>
-        <label for="futuristic">Elon Musk</label><br>
-        
-        <input type="radio" id="historian" name="mbtiType" value="Historian">
-        <label for="historian">Albert Einstein</label><br><br>
-        
-        <label for="linkedin">Please enter your LinkedIn link:</label>
-        <input type="url" id="linkedin" required><br><br>
+        <p>In arguments, you tend to use facts over feelings</p>
+        <input type="radio" id="Logical" value="Logical" required>
+        <label for="Logical">5</label><br>
+
+        <p>In arguments, you tend to use facts over feelings</p>
+        <input type="radio" id="Logical" value="Logical" required>
+        <label for="Logical">4</label><br>
+
+        <p>In arguments, you tend to use facts over feelings</p>
+        <input type="radio" id="Logical" value="Logical" required>
+        <label for="Logical">3</label><br>
+
+        <p>In arguments, you tend to use facts over feelings</p>
+        <input type="radio" id="Rational" value="Rational" required>
+        <label for="Rational">2</label><br>
+
+        <p>In arguments, you tend to use facts over feelings</p>
+        <input type="radio" id="Rational" value="Rational" required>
+        <label for="Rational">1</label><br>
+
+        <p>In arguments, you tend to use facts over feelings</p>
+        <input type="radio" id="Rational" value="Rational" required>
+        <label for="Rational">0</label><br>
+
+        <p>Owning a cat is something that interests you?</p>
+        <input type="radio" id="Rational" value="Rational" required>
+        <label for="Rational">0</label><br>
 
         <button type="submit">Submit</button>
     </form>
