@@ -38,17 +38,18 @@ def results():
     groupInJSONFormat=[]
     done=false
     maxAvgPercentDiff=0.0
-    while done==false:
-        for currUser in users:
-            currUserInJSONFormat=user.toJSON()
-            avgPercentDiff=new_user.avgPercentDiff(new_user, user)
-            if avgPercentDiff<=maxAvgPercentDiff: 
-                group.add(user)
-                groupINJSONFormat.add(currUserInJSONFormat)
-        if len(group)>0: done=true
-        else: maxAvgPercentDiff=maxAvgPercentDiff+0.1
+    if len(users)>0:
+        while done==false:
+            for currUser in users:
+                currUserInJSONFormat=user.toJSON()
+                avgPercentDiff=new_user.avgPercentDiff(new_user, currUser)
+                if avgPercentDiff<=maxAvgPercentDiff: 
+                    group.add(user)
+                    groupINJSONFormat.add(currUserInJSONFormat)
+            if len(group)>0: done=true
+            else: maxAvgPercentDiff=maxAvgPercentDiff+0.1
 
-    print(new_user_in_JSON_format)
+    print(groupINJSONFormat)
 
     try:
         session.add(new_user)
