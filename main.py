@@ -32,8 +32,20 @@ def results():
                   question_two=question_two, question_three=question_three, question_four=question_four,
                   question_five=question_five, question_six=question_six, question_seven=question_seven,
                   question_eight=question_eight)
-
     new_user_in_JSON_format=new_user.toJSON()
+    users = session.query(User).order_by(User.date_created).all()
+    groupInJSONFormat=[]
+    done=false
+    maxAvgPercentDiff=0.0
+    while done==false:
+        for user in users:
+            currUserInJSONFormat=user.toJSON()
+            
+            
+    
+    
+
+    
     print(new_user_in_JSON_format)
 
     try:
