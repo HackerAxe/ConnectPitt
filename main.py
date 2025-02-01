@@ -12,7 +12,7 @@ session = Session()
 
 @app.route("/")
 def main():
-    return render_template('index.html')
+    return render_template("index.html", results_ref=url_for('results'))
 
 @app.route("/results", methods=["POST"])
 def results():
