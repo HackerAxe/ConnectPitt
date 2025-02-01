@@ -6,12 +6,12 @@
     <title>MCONNECT-PITT</title>
     <script>
         async function saveUserData() {
-            let firstname = document.getElementById("firstname").value;
-            let lastname = document.getElementById("lastname").value;
+            let name = document.getElementById("name").value;
+            let phoneNumber = document.getElementById("phoneNumber").value;
             let linkedin = document.getElementById("linkedin").value;
             let mbtiType = document.querySelector('input[name="mbtiType"]:checked').value;
             
-            let userData = `${name},${lastname},${linkedin},${mbtiType}\n`;
+            let userData = `${name},${phoneNumber},${linkedin},${mbtiType}\n`;
             
             try {
                 await fetch('UserData.txt', {
@@ -38,7 +38,7 @@
                 users.forEach(user => {
                     let userData = user.split(',');
                     if (userData[3] === type) {
-                        displayArea.innerHTML += `<p>First Name: ${userData[0]}, Last Name: ${userData[1]}, LinkedIn: <a href="${userData[2]}" target="_blank">${userData[2]}</a></p>`;
+                        displayArea.innerHTML += `<p>First Name: ${userData[0]}, Phone: ${userData[1]}, LinkedIn: <a href="${userData[2]}" target="_blank">${userData[2]}</a></p>`;
                     }
                 });
             } catch (error) {
