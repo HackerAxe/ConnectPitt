@@ -1,3 +1,5 @@
 # ConnectPitt
-For the SheInnovates Hackathon
- welcome to the readme
+For the SheInnovates 2025 Hackathon
+Group Members
+- Andrew Y Chen: ayc23@pitt.edu
+
