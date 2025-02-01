@@ -32,29 +32,29 @@ def results():
                   question_two=question_two, question_three=question_three, question_four=question_four,
                   question_five=question_five, question_six=question_six, question_seven=question_seven,
                   question_eight=question_eight)
-    new_user_in_JSON_format=new_user.toJSON()
+    new_user_in_JSON_format=new_user.to_JSON()
     users = session.query(User).order_by(User.date_created).all()
     group=[]
     groupInJSONFormat=[]
-    done=false
+    done=False
     maxAvgPercentDiff=0.0
     if len(users)>0:
-        while done==false:
+        while done==False:
             for currUser in users:
-                currUserInJSONFormat=user.toJSON()
+                currUserInJSONFormat=currUser.to_JSON()
                 avgPercentDiff=new_user.avgPercentDiff(new_user, currUser)
                 if avgPercentDiff<=maxAvgPercentDiff: 
-                    group.add(user)
-                    groupINJSONFormat.add(currUserInJSONFormat)
-            if len(group)>0: done=true
+                    group.add(currUser)
+                    groupInJSONFormat.add(currUserInJSONFormat)
+            if len(group)>0: done=True
             else: maxAvgPercentDiff=maxAvgPercentDiff+0.1
 
-    print(groupINJSONFormat)
+    print(groupInJSONFormat)
 
     try:
         session.add(new_user)
         session.commit()
-        return render_template("results.html", users=groupINJSONFormat)
+        return render_template("results.html", users=groupInJSONFormat)
     except:
         return 'Issue adding task'
 
