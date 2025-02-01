@@ -39,7 +39,7 @@ def results():
     done=false
     maxAvgPercentDiff=0.0
     while done==false:
-        for user in users:
+        for currUser in users:
             currUserInJSONFormat=user.toJSON()
             avgPercentDiff=new_user.avgPercentDiff(new_user, user)
             if avgPercentDiff<=maxAvgPercentDiff: 
