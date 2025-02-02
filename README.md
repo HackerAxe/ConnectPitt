@@ -21,3 +21,6 @@ For the SheInnovates 2025 Hackathon
 - Machine Learning Script: Andrew, Luke
 - ~~PowerPoint Slides~~: Fi
 - ~~Presentation~~: Fi
+
+## Link
+- https://github.com/HackerAxe/ConnectPitt
