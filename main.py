@@ -1,16 +1,43 @@
 from flask import Flask, render_template, request, session, url_for
-from sqlalchemy import create_engine, delete
-from sqlalchemy.orm import sessionmaker
-from user_model import Base, User
+from sqlalchemy import Column, Integer, String, create_engine
+from sqlalchemy.orm import DeclarativeBase, sessionmaker
 
 app = Flask(__name__)
+class Base(DeclarativeBase): pass
+engine = create_engine('sqlite:///allusers.db', echo=True)
 
-engine = create_engine("sqlite:///users.db", echo=True)
-Base.metadata.create_all(bind=engine)
+class Users(Base):
+    __tablename__ = "Users"
+    _id = Column('id', Integer, primary_key=True)
+    name = Column('name', String)
+    phone = Column('phone', String)
+    social = Column('social', String)
+    q1 = Column('q1', Integer)
+    q2 = Column('q2', Integer)
+    q3 = Column('q3', Integer)
+    q4 = Column('q4', Integer)
+    q5 = Column('q5', Integer)
+    q6 = Column('q6', Integer)
+    q7 = Column('q7', Integer)
+    q8 = Column('q8', Integer)
+    _date = Column('date', String)
+
+    def __init__(self, name, phone, social, q1, q2, q3, q4, q5, q6, q7, q8):
+        self.name = name
+        self.phone = phone
+        self.social = social
+        self.q1 = q1
+        self.q2 = q2
+        self.q3 = q3
+        self.q4 = q4
+        self.q5 = q5
+        self.q6 = q6
+        self.q7 = q7
+        self.q8 = q8
+
+Base.metadata.create_all(engine)
 Session = sessionmaker(bind=engine)
 session = Session()
-
-id = 0
 
 @app.route("/")
 def main():
@@ -31,23 +58,15 @@ def results():
     q6 = request.form["question_six"]
     q7 = request.form["question_seven"]
     q8 = request.form["question_eight"]
-
-    user_object = {'Name':name, 'Phone Number':pnum, 'LinkedIn':social, 
-                'Question 1':q1, 
-                'Question 2':q2, 'Question 3':q3, 'Question 4':q4, 
-                'Question 5':q5, 'Question 6': q6, 'Question7': q7, 
-                'Question 8':q8}
     
-    # Create a new User
-    # Add to DataBase
-    print(pnum)
-    global id
-    id += 1
-    session.add(User(id=0, name=name, phone=0, social=social, q1=0,
-                  q2=1, q3=2, q4=3, q5=5, q6=7, q7=8, q8=9))
+    list = [name, pnum, social, q1, q2, q3, q4, q5, q6, q7, q8]
+    user = Users(name, pnum, social, q1, q2, q3, q4, q5, q6, q7, q8)
+
+    print(list)
+    session.add(user)
     session.commit()
 
-    return render_template('results.html', request = user_object)
+    return render_template('results.html')
     # users = session.query(User).order_by(User.date_created).all()
     # group=[]
     # groupInJSONFormat=[]
@@ -65,7 +84,6 @@ def results():
     #                groupInJSONFormat.add(currUserInJSONFormat)
     #        if len(group)>0: done=True
     #       else: maxAvgPercentDiff=maxAvgPercentDiff+0.1
-
 
     #try:
         #session.add(new_user)
