@@ -95,6 +95,12 @@ def results():
     #except:
         #return 'Issue adding task'
     
+# Data Extraction Algorithm: 
+def extract_questions():
+    questions = session.query([Users.q1, Users.q2, Users.q3, Users.q4, Users.q5, Users.q6, Users.q7, Users.q8])
+    
+    pass
+
 # Nearest Neighbors Algorithm
 def clustering():
     pass
