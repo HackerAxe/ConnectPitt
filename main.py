@@ -46,7 +46,7 @@ def main():
 @app.route("/results", methods=["POST"])
 def results():
     
-    # Retrieve Form Values
+    # Retrieve Form Values - Working
     name = request.form["name"]
     pnum = request.form["phoneNumber"]
     social = request.form["linkedIn"]
@@ -59,14 +59,17 @@ def results():
     q7 = request.form["question_seven"]
     q8 = request.form["question_eight"]
     
-    list = [name, pnum, social, q1, q2, q3, q4, q5, q6, q7, q8]
+    # Create a new User - Working
     user = Users(name, pnum, social, q1, q2, q3, q4, q5, q6, q7, q8)
 
-    print(list)
+    # Add & Commit New User to DataBase - Working
     session.add(user)
     session.commit()
 
-    return render_template('results.html')
+    # Return dictionary to results.html
+    users_all = session.query(Users).all() 
+    return render_template('results.html', users = users_all)
+
     # users = session.query(User).order_by(User.date_created).all()
     # group=[]
     # groupInJSONFormat=[]
@@ -92,5 +95,8 @@ def results():
     #except:
         #return 'Issue adding task'
     
+# Nearest Neighbors Algorithm
+def clustering():
+    pass
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port='5000', debug=True)
