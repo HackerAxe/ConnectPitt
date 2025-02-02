@@ -6,7 +6,13 @@
     
 </head>
 <body>
-    <p> Results Page </p>
+    <h1>Results: </h1>
+    <ul>
+        {% for option in request %}
+            <li>{{ request[option] }}</li>
+        {% endfor %}
+    </ul>
+
     <ul id="user_group">
         {% for user in users %}
             <li>{{user}}</li>

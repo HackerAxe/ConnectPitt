@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, session, url_for
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, delete
 from sqlalchemy.orm import sessionmaker
 from user_model import Base, User
 
@@ -14,50 +14,56 @@ session = Session()
 def main():
     return render_template("index.html", results_ref=url_for('results'))
 
-@app.route("/results", methods=["POST", "GET"])
+@app.route("/results", methods=["POST"])
 def results():
 
-    name=request.form["name"]
-    phoneNumber=request.form["phoneNumber"]
-    linkedIn=request.form["linkedIn"]
-    question_one=request.form["question_one"]
-    question_two=request.form["question_two"]
-    question_three=request.form["question_three"]
-    question_four=request.form["question_four"]
-    question_five=request.form["question_five"]
-    question_six=request.form["question_six"]
-    question_seven=request.form["question_seven"]
-    question_eight=request.form["question_eight"]
+    name = request.form["name"]
+    pNum = request.form["phoneNumber"]
+    social = request.form["linkedIn"]
+    q1 = request.form["question_one"]
+    q2 = request.form["question_two"]
+    q3 = request.form["question_three"]
+    q4 = request.form["question_four"]
+    q5 = request.form["question_five"]
+    q6 = request.form["question_six"]
+    q7 = request.form["question_seven"]
+    q8 = request.form["question_eight"]
 
-    new_user=User(name=name, phoneNumber=phoneNumber, linkedIn=linkedIn, question_one=question_one,
-                  question_two=question_two, question_three=question_three, question_four=question_four,
-                  question_five=question_five, question_six=question_six, question_seven=question_seven,
-                  question_eight=question_eight)
+    new_user=User(name=name, phoneNumber=pNum, linkedIn=social, question_one=q1,
+                  question_two=q2, question_three=q3, question_four=q4,
+                  question_five=q5, question_six=q6, question_seven=q7,
+                  question_eight=q8)
     
-    new_user_in_JSON_format=new_user.to_JSON()
+    new_user_JSON = new_user.to_JSON()
+    del new_user_JSON["id"]
 
+    print(new_user_JSON)
+
+    # Database operations
     users = session.query(User).order_by(User.date_created).all()
     group=[]
     groupInJSONFormat=[]
     done=False
     maxAvgPercentDiff=0.0
-    if len(users)>0:
-        while done==False:
-            for currUser in users:
-                currUserInJSONFormat=currUser.to_JSON()
-                avgPercentDiff=new_user.avgPercentDiff(currUser) # Error
-                if avgPercentDiff<=maxAvgPercentDiff: 
-                    group.add(currUser)
-                    groupInJSONFormat.add(currUserInJSONFormat)
-            if len(group)>0: done=True
-            else: maxAvgPercentDiff=maxAvgPercentDiff+0.1
+    
+    # Issue Here
+    #if len(users)>0:
+    #    while done==False:
+    #       for currUser in users:
+    #            currUserInJSONFormat=currUser.to_JSON()
+    #            avgPercentDiff=new_user.avgPercentDiff(currUser) # Error
+    #            if avgPercentDiff<=maxAvgPercentDiff: 
+    #                group.add(currUser)
+    #                groupInJSONFormat.add(currUserInJSONFormat)
+    #        if len(group)>0: done=True
+    #       else: maxAvgPercentDiff=maxAvgPercentDiff+0.1
 
     print(groupInJSONFormat)
 
     try:
         session.add(new_user)
         session.commit()
-        return render_template("results.html", users=groupInJSONFormat)
+        return render_template('results.html', request=new_user_JSON, users=groupInJSONFormat)
     except:
         return 'Issue adding task'
 
