@@ -14,3 +14,4 @@ For the SheInnovates 2025 Hackathon
 - ~~Learn JSON Processing, Language of Choice~~ - Alexis F
 - Learn Bash Scripting - Alexis F
 - ~~Fix Database Issues~~: Luke, Andrew 
+- Machine Learning Script: scikit-learn
