@@ -23,9 +23,10 @@ class User(Base):
     question_eight = Column("question_eight", Integer, nullable=False)
     date_created = Column("date_created", Date, nullable=False, default=dt.datetime.utcnow)
 
-    def __init__(self, name, social, pnum, q1, q2, q3, q4, q5, q6, q7, q8):
+    def __init__(self, id, name, phone, social, q1, q2, q3, q4, q5, q6, q7, q8):
+        self.id = id
         self.name = name
-        self.pnum = pnum
+        self.pnum = phone
         self.social = social
         self.q1 = q1
         self.q2 = q2
@@ -36,20 +37,20 @@ class User(Base):
         self.q7 = q7
         self.q8 = q8
 
-    def to_JSON(self):
-        return {"id":self.id,
-               "name": self.name,
-               "phoneNumber": self.pnum,
-               "linkedIn": self.social,
-               "question_one": self.q1,
-               "question_two": self.q2,
-               "question_three": self.q3,
-               "question_four": self.q4,
-               "question_five": self.q5,
-               "question_six": self.q6,
-               "question_seven": self.q7,
-               "question_eight": self.q8
-               }
+    #def to_JSON(self):
+    #    return {"id":self.id,
+    #           "name": self.name,
+    #          "phoneNumber": self.pnum,
+    #           "linkedIn": self.social,
+    #           "question_one": self.q1,
+    #           "question_two": self.q2,
+    #           "question_three": self.q3,
+    #           "question_four": self.q4,
+    #           "question_five": self.q5,
+    #           "question_six": self.q6,
+    #           "question_seven": self.q7,
+     #          "question_eight": self.q8
+     #          }
     
     def percentDiff(self, valone, valtwo):
         val1=int(valone)

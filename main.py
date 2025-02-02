@@ -10,16 +10,18 @@ Base.metadata.create_all(bind=engine)
 Session = sessionmaker(bind=engine)
 session = Session()
 
+id = 0
+
 @app.route("/")
 def main():
     return render_template("index.html", results_ref=url_for('results'))
 
 @app.route("/results", methods=["POST"])
 def results():
-
+    
     # Retrieve Form Values
     name = request.form["name"]
-    pNum = request.form["phoneNumber"]
+    pnum = request.form["phoneNumber"]
     social = request.form["linkedIn"]
     q1 = request.form["question_one"]
     q2 = request.form["question_two"]
@@ -30,19 +32,22 @@ def results():
     q7 = request.form["question_seven"]
     q8 = request.form["question_eight"]
 
-    # Create a new User
-    new_user=User(name=name, phoneNumber=pNum, linkedIn=social, question_one=q1,
-                  question_two=q2, question_three=q3, question_four=q4,
-                  question_five=q5, question_six=q6, question_seven=q7,
-                  question_eight=q8)
+    user_object = {'Name':name, 'Phone Number':pnum, 'LinkedIn':social, 
+                'Question 1':q1, 
+                'Question 2':q2, 'Question 3':q3, 'Question 4':q4, 
+                'Question 5':q5, 'Question 6': q6, 'Question7': q7, 
+                'Question 8':q8}
     
-    # Convert to JSON & Delete ID
-    new_user_JSON = new_user.to_JSON()
-    del new_user_JSON["id"]
-
-    print(new_user_JSON)
-
+    # Create a new User
     # Add to DataBase
+    print(pnum)
+    global id
+    id += 1
+    session.add(User(id=0, name=name, phone=0, social=social, q1=0,
+                  q2=1, q3=2, q4=3, q5=5, q6=7, q7=8, q8=9))
+    session.commit()
+
+    return render_template('results.html', request = user_object)
     # users = session.query(User).order_by(User.date_created).all()
     # group=[]
     # groupInJSONFormat=[]
@@ -62,12 +67,12 @@ def results():
     #       else: maxAvgPercentDiff=maxAvgPercentDiff+0.1
 
 
-    try:
-        session.add(new_user)
-        session.commit()
-        return render_template('results.html', request=new_user_JSON)
-    except:
-        return 'Issue adding task'
-
+    #try:
+        #session.add(new_user)
+        #session.commit()
+        
+    #except:
+        #return 'Issue adding task'
+    
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port='5000', debug=True)
