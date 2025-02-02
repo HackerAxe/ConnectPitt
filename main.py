@@ -35,7 +35,7 @@ def results():
                   question_eight=question_eight)
     
     new_user_in_JSON_format=new_user.to_JSON()
-    
+
     users = session.query(User).order_by(User.date_created).all()
     group=[]
     groupInJSONFormat=[]
@@ -62,4 +62,4 @@ def results():
         return 'Issue adding task'
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='127.0.0.1', port='5000', debug=True)
