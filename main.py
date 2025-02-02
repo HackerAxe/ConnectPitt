@@ -16,6 +16,7 @@ def main():
 
 @app.route("/results", methods=["POST", "GET"])
 def results():
+
     name=request.form["name"]
     phoneNumber=request.form["phoneNumber"]
     linkedIn=request.form["linkedIn"]
@@ -32,7 +33,9 @@ def results():
                   question_two=question_two, question_three=question_three, question_four=question_four,
                   question_five=question_five, question_six=question_six, question_seven=question_seven,
                   question_eight=question_eight)
+    
     new_user_in_JSON_format=new_user.to_JSON()
+    
     users = session.query(User).order_by(User.date_created).all()
     group=[]
     groupInJSONFormat=[]
