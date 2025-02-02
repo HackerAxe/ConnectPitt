@@ -14,7 +14,7 @@ session = Session()
 def main():
     return render_template("index.html", results_ref=url_for('results'))
 
-@app.route("/results", methods=["POST"])
+@app.route("/results", methods=["POST", "GET"])
 def results():
     name=request.form["name"]
     phoneNumber=request.form["phoneNumber"]
