@@ -13,9 +13,9 @@
         study buddy, friend, or even a <span style="color: red; font-family: Verdana, Geneva, Tahoma, sans-serif">love</span> interest!
     </p>
     <form action="{{ url_for('results') }}" method="post">
-        <label for="name">Name</label><input type="text" name="name"><br>
-        <label for="phoneNumber">Phone Number</label><input type="text" name="phoneNumber"><br>
-        <label for="linkedIn">LinkedIn</label><input type="text" name="linkedIn"><br>
+        <label for="name">Name</label><input type="text" name="name" class="info">
+        <label for="phoneNumber">Phone Number</label><input type="text" name="phoneNumber" class="info">
+        <label for="linkedIn">LinkedIn</label><input type="text" name="linkedIn" class="info"><br>
 
         <label for="question_one"> Q1 - You would rather have the superpower of teleportation than telekinesis </label><br>
         <label>0</label><input type="radio" name="question_one" value="0">

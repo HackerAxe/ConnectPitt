@@ -25,6 +25,17 @@ form {
 label {font-size: x-large; color:#000000; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;}
 
 input {margin-right: 5%;}
+
+.info {
+	margin-left: 2%;
+	margin-right: 5%;
+}
+
+button {
+	padding: 15px;
+	background-color: #E18470;
+}
+
 /* Style for body specifies a background color */
 body {
 	background-color: #ba5151;

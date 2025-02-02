@@ -5,11 +5,13 @@ For the SheInnovates 2025 Hackathon
 ## To Do:
 - ~~Configure Flask Server~~: Andrew Chen
 - ~~DevPost Page~~: Alexis F
-- Create HTML Pages: Andrew Chen
+- ~~Create HTML Main~~: Andrew Chen
+- Create HTML Results: Luke, Andrew 
 - Create JavaScript: JQuery - Andrew Chen
-- Create CSS Stylesheets - Fi 
+- ~~Create CSS Stylesheets~~ - Fi 
 - Create script to process backend data
 - ~~Create a SQL Database~~ - Luke B
 - Learn JQuery - Andrew Chen
-- Learn JSON Processing, Language of Choice
+- ~~Learn JSON Processing, Language of Choice~~ - Alexis F
 - Learn Bash Scripting - Alexis F
+- Fix Database Issues: Luke, Andrew 
