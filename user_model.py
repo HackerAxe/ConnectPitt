@@ -23,19 +23,32 @@ class User(Base):
     question_eight = Column("question_eight", Integer, nullable=False)
     date_created = Column("date_created", Date, nullable=False, default=dt.datetime.utcnow)
 
+    def __init__(self, name, social, pnum, q1, q2, q3, q4, q5, q6, q7, q8):
+        self.name = name
+        self.pnum = pnum
+        self.social = social
+        self.q1 = q1
+        self.q2 = q2
+        self.q3 = q3
+        self.q4 = q4
+        self.q5 = q5
+        self.q6 = q6
+        self.q7 = q7
+        self.q8 = q8
+
     def to_JSON(self):
-        return{"id":self.id,
+        return {"id":self.id,
                "name": self.name,
-               "phoneNumber": self.phoneNumber,
-               "linkedIn": self.linkedIn,
-               "question_one": self.question_one,
-               "question_two": self.question_two,
-               "question_three": self.question_three,
-               "question_four": self.question_four,
-               "question_five": self.question_five,
-               "question_six": self.question_six,
-               "question_seven": self.question_seven,
-               "question_eight": self.question_eight
+               "phoneNumber": self.pnum,
+               "linkedIn": self.social,
+               "question_one": self.q1,
+               "question_two": self.q2,
+               "question_three": self.q3,
+               "question_four": self.q4,
+               "question_five": self.q5,
+               "question_six": self.q6,
+               "question_seven": self.q7,
+               "question_eight": self.q8
                }
     
     def percentDiff(self, valone, valtwo):
